@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/default.xhtml">
+
+	<ui:define name="titlePage"> #{msgs.pole}</ui:define>
+	<ui:define name="bodyPage">
+
+		<h:form id="formTable">
+			<p:button icon="ui-icon-plus" outcome="create"
+				value="#{msgs.create} #{msgs.pole}" />
+			<p:dataTable id="table" var="pole"
+				value="#{poleBean.poles}" paginator="true" rows="10"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,20" resizableColumns="true" reflow="true"
+				paginatorPosition="bottom">
+
+				<f:facet name="header">
+					<h:outputText value="#{msgs.list_pole}" />
+				</f:facet>
+
+				<p:column sortBy="#{pole.name}"
+					headerText="#{msgs.name_pole}">
+					<h:outputText value="#{pole.name}" />
+				</p:column>
+
+				<p:column headerText="#{msgs.edit}">
+					<p:button value="#{msgs.edit}" icon="fa fa-fw fa-edit"
+						outcome="edit">
+						<f:param name="id" value="#{pole.id}" />
+					</p:button>
+				</p:column>
+				<p:column headerText="#{msgs.delete}">
+					<p:commandButton value="#{msgs.delete}" icon="fa fa-fw fa-remove"
+						actionListener="#{poleBean.delete(pole)}" update="table">
+						<p:confirm header="#{msgs.alert}"
+							message="#{msgs.confirm_delete}"
+							icon="ui-icon-alert" />
+					</p:commandButton>
+
+				</p:column>
+			</p:dataTable>
+		</h:form>
+		<ui:include src="/WEB-INF/util/dialogGlobal.xhtml" />
+	</ui:define>
+</ui:composition>
+</html>

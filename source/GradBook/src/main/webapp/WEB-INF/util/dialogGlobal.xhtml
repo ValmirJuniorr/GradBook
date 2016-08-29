@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Dialog</title>
+</h:head>
+<h:body>
+	<h:form id="formGlobalDialog">
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+			closeOnEscape="true" responsive="true">
+			<p:commandButton value="#{msgs.yes}" type="button"
+				styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+			<p:commandButton value="#{msgs.no}" type="button"
+				styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+		</p:confirmDialog>
+	</h:form>
+</h:body>
+</html>

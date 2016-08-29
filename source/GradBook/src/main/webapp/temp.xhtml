@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Temporário</title>
+</h:head>
+<h:body>
+
+	<h2>Só sucesso!</h2>
+	<h:form>
+		<p:panel header="Form" >
+			<p:panelGrid columns="3" cellpadding="5" columnClasses="ui-grid-col-4,ui-grid-col-8" 
+					styleClass="ui-panelgrid-blank">
+				<f:facet name="header">
+					<h:outputText value="Basic PanelGrid" />
+				</f:facet>
+				<p:outputLabel for="name" value="Nome: " />
+				<p:inputText id="name" value="#{courseBean.course.name}" />
+				<p:message for="name" />
+
+			</p:panelGrid>
+			<f:facet name="footer">
+				<p:commandButton value="Save" icon="ui-icon-check" validateClient="true" ajax="false"/>
+			</f:facet>
+		</p:panel>
+	</h:form>
+</h:body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title><ui:insert name="titlePage">GradBook</ui:insert></title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- h:outputStylesheet library="css" name="main.css" /-->
+</h:head>
+
+<h:body>
+	<header>
+		<h2>#{msgs.welcome}</h2>
+		<p:menubar>
+			<p:menuitem value="#{msgs.index}" url="/index.xhtml" />
+			<p:submenu label="#{msgs.register}">
+				<p:menuitem value="#{msgs.pole}" url="/pole/list.xhtml" />
+				<p:menuitem value="#{msgs.course}" url="/course/list.xhtml" />
+				<p:menuitem value="#{msgs.semester}" url="/semester/list.xhtml" />
+				<p:menuitem value="#{msgs.discipline}" url="/discipline/list.xhtml" />
+
+			</p:submenu>
+		</p:menubar>
+	</header>
+	<p:separator />
+	<ui:insert name="bodyPage"></ui:insert>
+</h:body>
+</html>

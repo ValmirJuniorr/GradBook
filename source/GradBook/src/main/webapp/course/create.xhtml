@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="titlePage"> #{msgs.register_course}</ui:define>
+	<ui:define name="bodyPage">
+		<h:form id="formRegister">
+			<p:panel id="panel" header="Form">
+
+				<div class="ui-fluid">
+					<p:panelGrid columns="3" cellpadding="5"
+						columnClasses="ui-grid-col-2,ui-grid-col-6,ui-grid-col-3"
+						layout="grid" styleClass="ui-panelgrid-blank">
+						<p:outputLabel id="abreviationCourseLabel"
+							for="abreviationCourseInput" value="#{msgs.abbreviation_course}" />
+						<p:inputText id="abreviationCourseInput"
+							placeholder="#{msgs.insert_abbreviation_course}"
+							value="#{courseBean.course.abbreviation}" />
+						<p:message for="abreviationCourseInput" />
+
+						<p:outputLabel id="nameCourseLabel" for="nameCourseInput"
+							value="#{msgs.name_course}" />
+						<p:inputText id="nameCourseInput"
+							placeholder="#{msgs.insert_name_course}"
+							value="#{courseBean.course.name}" />
+						<p:message for="nameCourseInput" />
+
+					</p:panelGrid>
+				</div>
+				<f:facet name="footer">
+					<ui:insert name="comands">
+						<p:commandButton value="#{msgs.save}" action="#{courseBean.create()}" icon="fa fa-fw fa-save"
+							update="formRegister" />
+						<p:button outcome="list" value="#{msgs.show_courses}" icon="fa fa-fw fa-eye"/>
+						<p:button type="reset" value="#{msgs.reset}" icon="fa fa-fw fa-eraser"/>
+					</ui:insert>
+				</f:facet>
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>

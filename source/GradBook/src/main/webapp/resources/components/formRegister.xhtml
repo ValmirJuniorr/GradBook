@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<cc:interface>
+	<cc:attribute name="title" required="true" />
+	<cc:attribute name="id" required="true" />
+</cc:interface>
+
+<cc:implementation>
+	<h2>#{cc.attrs.title}</h2>
+	<h:form id="#{cc.attrs.id}">
+		<cc:insertChildren />
+	</h:form>
+</cc:implementation>
+
+</html>

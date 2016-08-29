@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+<cc:interface>
+	<cc:attribute name="id" default="fm" required="false" />
+	<cc:attribute name="idValue" required="true" />
+	<cc:attribute name="label" required="true" />
+	<cc:attribute name="value" required="true" />
+</cc:interface>
+
+<cc:implementation>
+	<h:column>
+		<p:outputLabel id="#{cc.attrs.idValue}Label"
+			for="#{cc.attrs.id}:#{cc.attrs.idValue}" value="#{cc.attrs.label}: " />
+	</h:column>
+	<h:column>
+		<p:inputText id="#{cc.attrs.idValue}" required="true"
+			value="#{cc.attrs.value}"
+			pt:placeholder="#{msgs.insert} #{msgs.the} #{cc.attrs.label}">
+			<cc:insertChildren />
+		</p:inputText>
+	</h:column>
+</cc:implementation>
+</html>

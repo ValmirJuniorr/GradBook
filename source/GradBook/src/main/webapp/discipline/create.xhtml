@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="titlePage"> #{msgs.register_discipline}</ui:define>
+	<ui:define name="bodyPage">
+		<h:form id="formRegister">
+			<p:panel id="panel" header="Form">
+				<div class="ui-fluid">
+					<p:panelGrid columns="3"
+						columnClasses="ui-grid-col-2,ui-grid-col-6,ui-grid-col-3"
+						layout="grid" styleClass="ui-panelgrid-blank">
+
+						<p:outputLabel for="inputNameDiscipline"
+							value="#{msgs.name_discipline}" />
+						<p:inputText id="inputNameDiscipline"
+							placeholder="#{msgs.insert_name_discipline}"
+							value="#{disciplineBean.discipline.name}" />
+						<p:message for="inputNameDiscipline" />
+
+						<p:outputLabel for="inputWorkLoadDiscipline"
+							value="#{msgs.work_load_discipline}" />
+						<p:inputNumber id="inputWorkLoadDiscipline" minValue="20" maxlength="100" emptyValue="20"
+							placeholder="#{msgs.insert_work_load_discipline}"
+							value="#{disciplineBean.discipline.work_Load}" />
+						<p:message for="inputWorkLoadDiscipline" />
+
+						<p:outputLabel value="#{msgs.course}:" for="courseSelect" />
+
+						<p:selectOneMenu id="courseSelect" value="#{semesterBean.course}">
+							<f:selectItem itemLabel="#{msgs.choice_course} "
+								noSelectionOption="true" />
+							<f:selectItems value="#{courseBean.courses}" var="coure"
+								itemLabel="#{coure.name}" itemValue="#{coure}" />
+							<p:ajax update="semesterSelect" listener="#{semesterBean.updateSemesters()}"/>
+						</p:selectOneMenu>
+
+						<p:message for="courseSelect" />
+
+						<p:outputLabel value="#{msgs.semester}:" for="semesterSelect" />
+
+						<p:selectOneMenu id="semesterSelect"
+							value="#{disciplineBean.discipline.semester}">
+							<f:selectItem itemLabel="#{msgs.choice_semester} "
+								noSelectionOption="true" />
+							<f:selectItems value="#{semesterBean.semestersByCourse}"
+								var="semester" itemLabel="#{semester.name}" itemValue="#{semester}" />
+						</p:selectOneMenu>
+
+						<p:message for="semesterSelect" />
+
+					</p:panelGrid>
+				</div>
+				<f:facet name="footer">
+					<ui:insert name="comands">
+						<p:commandButton value="#{msgs.save}"
+							action="#{disciplineBean.create()}" icon="fa fa-fw fa-save"
+							update="formRegister" />
+						<p:button outcome="list" value="#{msgs.show_disciplines}"
+							icon="fa fa-fw fa-eye" />
+						<p:button type="reset" value="#{msgs.reset}"
+							icon="fa fa-fw fa-eraser" />
+					</ui:insert>
+				</f:facet>
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>

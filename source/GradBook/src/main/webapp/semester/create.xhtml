@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="titlePage"> #{msgs.register_semester}</ui:define>
+	<ui:define name="bodyPage">
+		<h:form id="formRegister">
+			<p:panel id="panel" header="Form">
+				<div class="ui-fluid">
+					<p:panelGrid columns="3"
+						columnClasses="ui-grid-col-2,ui-grid-col-6,ui-grid-col-3"
+						layout="grid" styleClass="ui-panelgrid-blank">
+
+						<p:outputLabel id="nameSemester" for="nameSemesterInput"
+							value="#{msgs.name_semester}" />
+						<p:inputText id="nameSemesterInput"
+							placeholder="#{msgs.insert_name_semester}"
+							value="#{semesterBean.semester.name}" />
+						<p:message for="nameSemesterInput" />
+
+						<p:outputLabel value="#{msgs.course}:" for="courseSelect" />
+
+						<p:selectOneMenu id="courseSelect"
+							value="#{semesterBean.semester.course}">
+							<f:selectItem itemLabel="#{msgs.choice_course} "
+								noSelectionOption="true" />
+							<f:selectItems value="#{courseBean.courses}" var="coure"
+								itemLabel="#{coure.name}" itemValue="#{coure}" />
+						</p:selectOneMenu>
+
+						<p:message for="courseSelect" />
+
+					</p:panelGrid>
+				</div>
+				<f:facet name="footer">
+					<ui:insert name="comands">
+						<p:commandButton value="#{msgs.save}"
+							action="#{semesterBean.create()}" icon="fa fa-fw fa-save"
+							update="formRegister" />
+						<p:button outcome="list" value="#{msgs.show_semesters}"
+							icon="fa fa-fw fa-eye" />
+						<p:button type="reset" value="#{msgs.reset}"
+							icon="fa fa-fw fa-eraser" />
+					</ui:insert>
+				</f:facet>
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>
