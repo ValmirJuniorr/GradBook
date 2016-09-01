@@ -3,6 +3,7 @@ package br.com.valmirjunior.gradbook.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -44,7 +45,7 @@ public class Course implements Serializable {
 	@Column(name = Consts.COLUMN_NAME_COURSE)
 	private String name;
 
-	@OneToMany(mappedBy = Consts.COURSE)
+	@OneToMany(mappedBy = Consts.COURSE,cascade=CascadeType.REMOVE)
 	private List<Semester> semesters;
 
 	public int getId() {

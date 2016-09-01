@@ -3,35 +3,18 @@ package br.com.valmirjunior.gradbook.model.dao;
 import java.util.List;
 
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import javax.transaction.Transactional;
 
 import br.com.valmirjunior.gradbook.model.Task;
 
-@Stateless(name="TaskDao")
-public class TaskDao {
-
-	@PersistenceContext
-	private EntityManager manager;
-
+@Stateless(name = "TaskDao")
+public class TaskDao extends GenericDao {
 	public Task getById(int id) {
-		return manager.find(Task.class, id);
-	}
-
-	@Transactional
-	public void merge(Task task) {
-		this.manager.merge(task);
-	}
-
-	@Transactional
-	public void remove(Task task) {
-		this.manager.remove(this.manager.contains(task) ? task : manager.merge(task));
+		return super.getById(Task.class, id);
 	}
 
 	public List<Task> getList() {
-		TypedQuery<Task> query = this.manager.createQuery("select t from Task t", Task.class);
+		TypedQuery<Task> query = super.manager.createQuery("select t from Task t", Task.class);
 		return query.getResultList();
 	}
 

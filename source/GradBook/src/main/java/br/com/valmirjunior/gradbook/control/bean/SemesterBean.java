@@ -61,6 +61,9 @@ public class SemesterBean implements Serializable {
 	}
 
 	public List<Semester> getSemestersByCourse() {		
+		if(this.semestersByCourse==null){
+			updateSemesters();
+		}
 		return this.semestersByCourse;
 	}
 
@@ -69,8 +72,10 @@ public class SemesterBean implements Serializable {
 	}
 	
 	public void updateSemesters(){
-		if(this.semestersByCourse==null){
+		if(this.course!=null){
 			this.semestersByCourse=this.semesterDao.getListByCourse(this.course);
+		}else{
+			this.semestersByCourse=null;
 		}
 	}
 

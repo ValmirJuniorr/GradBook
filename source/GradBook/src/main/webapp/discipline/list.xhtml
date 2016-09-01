@@ -38,11 +38,17 @@
 					<h:outputText value="#{discipline.semester.name}" />
 				</p:column>
 				
+				<p:column sortBy="#{discipline.semester.course.name}"
+					headerText="#{msgs.course}">
+					<h:outputText value="#{discipline.semester.course.name}" />
+				</p:column>
+				
 
 				<p:column headerText="#{msgs.edit}">
 					<p:button value="#{msgs.edit}" icon="fa fa-fw fa-edit"
 						outcome="edit">
-						<f:param name="id" value="#{discipline.id}" />
+						<f:param name="discipline" value="#{discipline.id}" />
+						<f:param name="course" value="#{discipline.semester.course.id}" />
 					</p:button>
 				</p:column>
 				<p:column headerText="#{msgs.delete}">

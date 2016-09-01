@@ -24,7 +24,8 @@
 
 						<p:outputLabel for="inputWorkLoadDiscipline"
 							value="#{msgs.work_load_discipline}" />
-						<p:inputNumber id="inputWorkLoadDiscipline" minValue="20" maxlength="100" emptyValue="20"
+						<p:spinner id="inputWorkLoadDiscipline" min="20" max="100" 
+							stepFactor="20" suffix=" HS" dir="LTR" 
 							placeholder="#{msgs.insert_work_load_discipline}"
 							value="#{disciplineBean.discipline.work_Load}" />
 						<p:message for="inputWorkLoadDiscipline" />
@@ -36,7 +37,8 @@
 								noSelectionOption="true" />
 							<f:selectItems value="#{courseBean.courses}" var="coure"
 								itemLabel="#{coure.name}" itemValue="#{coure}" />
-							<p:ajax update="semesterSelect" listener="#{semesterBean.updateSemesters()}"/>
+							<p:ajax update="semesterSelect"
+								listener="#{semesterBean.updateSemesters()}" />
 						</p:selectOneMenu>
 
 						<p:message for="courseSelect" />
@@ -48,7 +50,8 @@
 							<f:selectItem itemLabel="#{msgs.choice_semester} "
 								noSelectionOption="true" />
 							<f:selectItems value="#{semesterBean.semestersByCourse}"
-								var="semester" itemLabel="#{semester.name}" itemValue="#{semester}" />
+								var="semester" itemLabel="#{semester.name}"
+								itemValue="#{semester}" />
 						</p:selectOneMenu>
 
 						<p:message for="semesterSelect" />

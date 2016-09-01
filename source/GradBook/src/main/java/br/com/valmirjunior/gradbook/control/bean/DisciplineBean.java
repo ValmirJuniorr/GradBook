@@ -8,7 +8,9 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import br.com.valmirjunior.gradbook.model.Course;
 import br.com.valmirjunior.gradbook.model.Discipline;
+import br.com.valmirjunior.gradbook.model.Semester;
 import br.com.valmirjunior.gradbook.model.dao.DisciplineDao;
 import br.com.valmirjunior.gradbook.util.FacesUtil;
 
@@ -59,7 +61,7 @@ public class DisciplineBean implements Serializable {
 
 	public void update() {
 		this.disciplineDao.merge(this.discipline);
-		this.setDiscipline(null);
+		this.setDisciplines(null);
 		FacesUtil.showUpdateRegisterMessage();
 	}
 
@@ -71,6 +73,8 @@ public class DisciplineBean implements Serializable {
 
 	private void resetAttributes() {
 		this.setDiscipline(new Discipline());
+		this.discipline.setSemester(new Semester());
+		this.discipline.getSemester().setCourse(new Course());
 		this.setDisciplines(null);
 	}
 

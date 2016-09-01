@@ -41,12 +41,13 @@ public class Semester implements Serializable {
 	private String name;
 
 	@NotNull
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = Consts.COLUMN_COURSE_SEMESTER, foreignKey = @ForeignKey(name = Consts.FK_ID_COURSE_SEMESTER))
 	private Course course;
 
+
 	
-	@OneToMany(mappedBy =Consts.SEMESTER)
+	@OneToMany(mappedBy =Consts.SEMESTER,cascade = CascadeType.REMOVE)
 	private List<Discipline> disciplines;
 
 	public int getId() {

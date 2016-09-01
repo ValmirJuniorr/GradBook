@@ -2,7 +2,6 @@ package br.com.valmirjunior.gradbook.model;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -44,11 +43,19 @@ public class Discipline implements Serializable {
 	@Column(name = Consts.COLUMN_WORK_LOAD_DISCIPLINE)
 	private int Work_Load;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@NotNull
+	@ManyToOne
 	@JoinColumn(name = Consts.COLUMN_SEMESTER_DISCIPLINE, foreignKey = @ForeignKey(name = Consts.FK_ID_SEMESTER_DISCIPLINE))
 	private Semester semester;
 
 	
+	
+	
+	public Discipline() {
+		super();
+		Work_Load = 20;
+	}
+
 	public int getId() {
 		return id;
 	}
