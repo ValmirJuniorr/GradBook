@@ -39,6 +39,9 @@ public class CollaboratorBean implements Serializable {
 	}
 
 	public List<Collaborator> getCollaborators() {
+		if(this.collaborators==null){
+			this.setCollaborators(collaboratorDao.getList());
+		}
 		return collaborators;
 	}
 

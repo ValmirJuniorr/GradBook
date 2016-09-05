@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:metadata>
+	<f:viewParam name="id" value="#{functionBean.function}" />
+</f:metadata>
+
+<ui:composition template="/function/create.xhtml">
+	<ui:define name="comands">
+		<p:commandButton value="#{msgs.save}" icon="fa fa-fw fa-save"
+			action="#{functionBean.update()}" update="formRegister" />
+		<p:button outcome="list" value="#{msgs.cancel}"
+			icon="fa fa-fw fa-arrow-circle-o-left" />
+	</ui:define>
+</ui:composition>
+
+</html>
