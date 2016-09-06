@@ -41,7 +41,7 @@ public class Semester implements Serializable {
 	private String name;
 
 	@NotNull
-	@ManyToOne
+	@ManyToOne	
 	@JoinColumn(name = Consts.COLUMN_COURSE_SEMESTER, foreignKey = @ForeignKey(name = Consts.FK_ID_COURSE_SEMESTER))
 	private Course course;
 

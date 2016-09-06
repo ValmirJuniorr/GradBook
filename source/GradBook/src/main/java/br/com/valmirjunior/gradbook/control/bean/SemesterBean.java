@@ -25,7 +25,7 @@ public class SemesterBean implements Serializable {
 	@EJB
 	private SemesterDao semesterDao;
 	private Semester semester;
-	private List<Semester> semesters,semestersByCourse;
+	private List<Semester> semesters;
 	private Course course;
 
 	@PostConstruct
@@ -40,18 +40,7 @@ public class SemesterBean implements Serializable {
 	public void setSemester(Semester semester) {
 		this.semester = semester;
 	}
-
-	public List<Semester> getSemesters() {
-		if (this.semesters == null) {
-			this.semesters = semesterDao.getList();
-		}
-		return semesters;
-	}	
-
-	public void setSemesters(List<Semester> semesters) {
-		this.semesters = semesters;
-	}
-
+	
 	public Course getCourse() {
 		return course;
 	}
@@ -60,22 +49,37 @@ public class SemesterBean implements Serializable {
 		this.course = course;
 	}
 
+	public List<Semester> getSemesters() {
+		if (this.semesters == null) {
+			this.semesters = semesterDao.getList();
+		}
+		return semesters;
+	}	
+	
+	public List<Semester> getSemestersEager() {
+		if (this.semesters == null) {
+			this.semesters = semesterDao.getListEager();
+		}
+		return semesters;
+	}	
+
+	public void setSemesters(List<Semester> semesters) {
+		this.semesters = semesters;
+	}	
+
 	public List<Semester> getSemestersByCourse() {		
-		if(this.semestersByCourse==null){
+		if(this.semesters==null){
 			updateSemesters();
 		}
-		return this.semestersByCourse;
+		return this.semesters;
 	}
 
-	public void setSemestersByCourse(List<Semester> semestersByCourse) {
-		this.semestersByCourse = semestersByCourse;
-	}
 	
 	public void updateSemesters(){
 		if(this.course!=null){
-			this.semestersByCourse=this.semesterDao.getListByCourse(this.course);
+			this.semesters=this.semesterDao.getListByCourse(this.course);
 		}else{
-			this.semestersByCourse=null;
+			this.semesters=null;
 		}
 	}
 

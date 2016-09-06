@@ -16,10 +16,14 @@ public class SemesterDao extends GenericDao {
 	}
 
 	public List<Semester> getList() {
-		TypedQuery<Semester> query = super.manager.createQuery("select s from Semester s ", Semester.class);
+		TypedQuery<Semester> query = super.manager.createQuery("select s from Semester s order by s.name", Semester.class);
 		return query.getResultList();
 	}
 	
+	public List<Semester> getListEager() {
+		TypedQuery<Semester> query = super.manager.createQuery("select s from Semester s  left join  fetch s.course", Semester.class);
+		return query.getResultList();
+	}
 
 	public List<Semester> getListByCourse(Course course) {
 		TypedQuery<Semester> query = super.manager.createQuery("select s from Semester s where s.course = :course",

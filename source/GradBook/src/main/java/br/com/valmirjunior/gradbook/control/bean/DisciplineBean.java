@@ -47,6 +47,13 @@ public class DisciplineBean implements Serializable {
 		}
 		return disciplines;
 	}	
+	
+	public List<Discipline> getDisciplinesEager() {
+		if (this.disciplines == null) {
+			this.disciplines = this.disciplineDao.getListEager();
+		}
+		return disciplines;
+	}	
 
 	public void setDisciplines(List<Discipline> disciplines) {
 		this.disciplines = disciplines;
