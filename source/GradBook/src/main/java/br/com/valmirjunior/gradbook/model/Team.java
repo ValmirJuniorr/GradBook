@@ -2,7 +2,6 @@ package br.com.valmirjunior.gradbook.model;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -36,11 +35,13 @@ public class Team implements Serializable {
 	@Column(name = Consts.COLUMN_NAME_TEAM)
 	private String name;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@NotNull
+	@ManyToOne
 	@JoinColumn(name = Consts.COLUMN_SEMESTER_TEAM, foreignKey = @ForeignKey(name = Consts.FK_ID_SEMESTER_TEAM))
 	private Semester semester;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@NotNull
+	@ManyToOne
 	@JoinColumn(name = Consts.COLUMN_POLE_TEAM, foreignKey = @ForeignKey(name = Consts.FK_ID_POLE_TEAM))
 	private Pole pole;
 

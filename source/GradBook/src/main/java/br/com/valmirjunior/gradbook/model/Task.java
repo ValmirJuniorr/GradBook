@@ -22,11 +22,11 @@ import javax.validation.constraints.NotNull;
 @Table(schema=Consts.SCHEMA,name=Consts.TABLE_TASK)
 @SequenceGenerator(schema=Consts.SCHEMA, name=Consts.SEQUENCE_TASK,sequenceName=Consts.SEQUENCE_NAME_TASK, allocationSize=Consts.ALLOCATION_SIZE)
 public class Task implements Serializable {
-	
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -855457698925315632L;
+	private static final long serialVersionUID = -5634765572185644812L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator=Consts.SEQUENCE_TASK)

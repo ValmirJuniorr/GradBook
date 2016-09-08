@@ -27,6 +27,7 @@ public class TeamConverter implements Converter {
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
 		if (value != "") {
 			return genericDao.getById(Team.class, Integer.parseInt(value));
+			
 		}
 		return null;
 	}

@@ -1,12 +1,15 @@
 package br.com.valmirjunior.gradbook.model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -34,6 +37,9 @@ public class Pole implements Serializable {
 	@Column(name=Consts.COLUMN_NAME_POLE)
 	private String name;
 	
+	@OneToMany(mappedBy = Consts.POLE,cascade=CascadeType.REMOVE)
+	private List<Team> teams;
+	
 	
 	public int getId() {
 		return id;
@@ -46,6 +52,15 @@ public class Pole implements Serializable {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	
+	
+	public List<Team> getTeams() {
+		return teams;
+	}
+	public void setTeams(List<Team> teams) {
+		this.teams = teams;
 	}
 	@Override
 	public int hashCode() {

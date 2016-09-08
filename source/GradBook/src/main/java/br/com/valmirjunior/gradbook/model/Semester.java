@@ -49,6 +49,9 @@ public class Semester implements Serializable {
 	
 	@OneToMany(mappedBy =Consts.SEMESTER,cascade = CascadeType.REMOVE)
 	private List<Discipline> disciplines;
+	
+	@OneToMany(mappedBy =Consts.SEMESTER,cascade = CascadeType.REMOVE)
+	private List<Team> teams;
 
 	public int getId() {
 		return id;
@@ -82,6 +85,16 @@ public class Semester implements Serializable {
 
 	public void setDisciplines(List<Discipline> disciplines) {
 		this.disciplines = disciplines;
+	}
+	
+	
+
+	public List<Team> getTeams() {
+		return teams;
+	}
+
+	public void setTeams(List<Team> teams) {
+		this.teams = teams;
 	}
 
 	@Override
