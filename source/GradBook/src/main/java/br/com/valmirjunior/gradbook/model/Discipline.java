@@ -1,7 +1,9 @@
 package br.com.valmirjunior.gradbook.model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -10,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
@@ -48,6 +51,8 @@ public class Discipline implements Serializable {
 	@JoinColumn(name = Consts.COLUMN_SEMESTER_DISCIPLINE, foreignKey = @ForeignKey(name = Consts.FK_ID_SEMESTER_DISCIPLINE))
 	private Semester semester;
 
+	@OneToMany(mappedBy =Consts.DISCIPLINE,cascade = CascadeType.REMOVE)
+	private List<Task> tasks;
 	
 	
 	
@@ -87,6 +92,16 @@ public class Discipline implements Serializable {
 
 	public void setWork_Load(int work_Load) {
 		Work_Load = work_Load;
+	}
+	
+	
+
+	public List<Task> getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(List<Task> tasks) {
+		this.tasks = tasks;
 	}
 
 	@Override

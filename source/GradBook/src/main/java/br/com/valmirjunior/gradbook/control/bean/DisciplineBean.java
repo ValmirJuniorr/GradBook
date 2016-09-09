@@ -26,7 +26,8 @@ public class DisciplineBean implements Serializable {
 	@EJB
 	private DisciplineDao disciplineDao;
 	private Discipline discipline;
-	private List<Discipline> disciplines;	
+	private List<Discipline> disciplines;
+	private Semester semester; 
 
 	@PostConstruct
 	private void init() {
@@ -57,7 +58,29 @@ public class DisciplineBean implements Serializable {
 
 	public void setDisciplines(List<Discipline> disciplines) {
 		this.disciplines = disciplines;
+	}
+	
+	public Semester getSemester() {
+		return semester;
+	}
+
+	public void setSemester(Semester semester) {
+		this.semester = semester;
+	}
+	
+	public List<Discipline> getDisciplinesBySemester() {
+		if(this.disciplines==null){
+			updateDisciplines();
+		}
+		return this.disciplines;
 	}	
+	public void updateDisciplines(){
+		if(this.semester!=null){
+			this.disciplines=this.disciplineDao.getListBySemester(this.semester);
+		}else{
+			this.disciplines=null;
+		}
+	}
 
 
 	public void create() {

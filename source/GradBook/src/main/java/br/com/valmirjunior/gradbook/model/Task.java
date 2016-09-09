@@ -3,7 +3,6 @@ package br.com.valmirjunior.gradbook.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -44,17 +43,17 @@ public class Task implements Serializable {
 	private Date dateEnd;
 	
 	@NotNull
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	@JoinColumn(name = Consts.COLUMN_FUNCTION_TASK, foreignKey = @ForeignKey(name = Consts.FK_ID_FUNCTION_TASK))
 	private Function function;
 	
 	@NotNull
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = Consts.COLUMN_COLLABORATOR_TASK, foreignKey = @ForeignKey(name = Consts.FK_ID_COLLABORATOR_TASK))
 	private Collaborator collaborator;
 	
 	@NotNull
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = Consts.COLUMN_DISCIPLINE_TASK, foreignKey = @ForeignKey(name = Consts.FK_ID_DISCIPLINE_TASK))
 	private Discipline discipline;
 
@@ -82,11 +81,11 @@ public class Task implements Serializable {
 		this.dateEnd = dateEnd;
 	}
 
-	public Function getFuction() {
+	public Function getFunction() {
 		return function;
 	}
 
-	public void setFuction(Function function) {
+	public void setFunction(Function function) {
 		this.function = function;
 	}
 

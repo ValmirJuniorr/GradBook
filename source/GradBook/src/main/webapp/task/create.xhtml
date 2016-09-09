@@ -15,24 +15,45 @@
 						columnClasses="ui-grid-col-2,ui-grid-col-6,ui-grid-col-3"
 						layout="grid" styleClass="ui-panelgrid-blank">
 
-						<p:outputLabel for="inputNameTeam" value="#{msgs.name_team}" />
-						<p:inputText id="inputNameTeam"
-							placeholder="#{msgs.insert_name_team}"
-							value="#{teamBean.team.name}" />
-						<p:message for="inputNameTeam" />
+						<p:outputLabel for="inputDateStarterTask"
+							value="#{msgs.date_start_task}" />
+						<p:calendar id="inputDateStarterTask"
+							value="#{taskBean.task.dateStarter}" pattern="dd-MM-yyyy"
+							mask="true" />
+						<p:message for="inputDateStarterTask" />
 
-						<p:outputLabel value="#{msgs.pole}:" for="poleSelect" />
+						<p:outputLabel for="inputDateEndTask"
+							value="#{msgs.date_end_task}" />
+						<p:calendar id="inputDateEndTask" value="#{taskBean.task.dateEnd}"
+							pattern="dd-MM-yyyy" mask="true" />
+						<p:message for="inputDateEndTask" />
 
-						<p:selectOneMenu id="poleSelect" value="#{teamBean.team.pole}">
-							<f:selectItem itemLabel="#{msgs.choice_pole} "
+
+						<p:outputLabel value="#{msgs.collaborator}:"
+							for="collaboratorSelect" />
+
+						<p:selectOneMenu id="collaboratorSelect"
+							value="#{taskBean.task.collaborator}">
+							<f:selectItem itemLabel="#{msgs.choice_collaborator} "
 								noSelectionOption="true" />
-							<f:selectItems value="#{poleBean.poles}" var="pole"
-								itemLabel="#{pole.name}" itemValue="#{pole}" />
+							<f:selectItems value="#{collaboratorBean.collaborators}"
+								var="collaborator" itemLabel="#{collaborator.name}"
+								itemValue="#{collaborator}" />
 						</p:selectOneMenu>
 
-						<p:message for="poleSelect" />
+						<p:message for="collaboratorSelect" />
 
+						<p:outputLabel value="#{msgs.function}:" for="functionSelect" />
 
+						<p:selectOneMenu id="functionSelect"
+							value="#{taskBean.task.function}">
+							<f:selectItem itemLabel="#{msgs.choice_function} "
+								noSelectionOption="true" />
+							<f:selectItems value="#{functionBean.functions}" var="function"
+								itemLabel="#{function.name}" itemValue="#{function}" />
+						</p:selectOneMenu>
+
+						<p:message for="functionSelect" />
 
 						<p:outputLabel value="#{msgs.course}:" for="courseSelect" />
 
@@ -50,24 +71,41 @@
 						<p:outputLabel value="#{msgs.semester}:" for="semesterSelect" />
 
 						<p:selectOneMenu id="semesterSelect"
-							value="#{teamBean.team.semester}">
+							value="#{disciplineBean.semester}">
 							<f:selectItem itemLabel="#{msgs.choice_semester} "
 								noSelectionOption="true" />
 							<f:selectItems value="#{semesterBean.semestersByCourse}"
 								var="semester" itemLabel="#{semester.name}"
 								itemValue="#{semester}" />
+							<p:ajax update="disciplineSelect"
+								listener="#{semesterBean.updateSemesters()}" />
 						</p:selectOneMenu>
 
 						<p:message for="semesterSelect" />
+
+
+						<p:outputLabel value="#{msgs.discipline}:" for="disciplineSelect" />
+						
+						<p:selectOneMenu id="disciplineSelect"
+							value="#{taskBean.task.discipline}">
+							<f:selectItem itemLabel="#{msgs.choice_discipline} "
+								noSelectionOption="true" />
+							<f:selectItems value="#{disciplineBean.disciplinesBySemester}"
+								var="discipline" itemLabel="#{discipline.name}"
+								itemValue="#{discipline}" />
+						</p:selectOneMenu>
+						
+						<p:message for="disciplineSelect" />
+
 
 					</p:panelGrid>
 				</div>
 				<f:facet name="footer">
 					<ui:insert name="comands">
 						<p:commandButton value="#{msgs.save}"
-							action="#{teamBean.create()}" icon="fa fa-fw fa-save"
+							action="#{taskBean.create()}" icon="fa fa-fw fa-save"
 							update="formRegister" />
-						<p:button outcome="list" value="#{msgs.show_team}"
+						<p:button outcome="list" value="#{msgs.show_task}"
 							icon="fa fa-fw fa-eye" />
 						<p:button type="reset" value="#{msgs.reset}"
 							icon="fa fa-fw fa-eraser" />

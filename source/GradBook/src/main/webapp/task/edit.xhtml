@@ -7,14 +7,14 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <f:metadata>
-	<f:viewParam name="team" value="#{teamBean.team}" />
+	<f:viewParam name="task" value="#{taskBean.task}" />
 	<f:viewParam name="course" value="#{semesterBean.course}" />	
 </f:metadata>
 
-<ui:composition template="/team/create.xhtml">
+<ui:composition template="/task/create.xhtml">
 	<ui:define name="comands">
 		<p:commandButton value="#{msgs.save}" icon="fa fa-fw fa-save"
-			action="#{disciplineBean.update()}" update="formRegister" />
+			action="#{taskBean.update()}" update="formRegister" />
 		<p:button outcome="list" value="#{msgs.cancel}"
 			icon="fa fa-fw fa-arrow-circle-o-left" />
 	</ui:define>

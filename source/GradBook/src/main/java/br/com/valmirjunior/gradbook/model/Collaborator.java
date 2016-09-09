@@ -1,12 +1,15 @@
 package br.com.valmirjunior.gradbook.model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -38,6 +41,9 @@ public class Collaborator implements Serializable {
 	@Size(max=Consts.SIZE_CPF,min=Consts.SIZE_CPF)
 	@Column(name=Consts.COLUMN_CPF_COLLABORATOR)
 	private String cpf;
+	
+	@OneToMany(mappedBy =Consts.COLLABORATOR,cascade = CascadeType.REMOVE)
+	private List<Task> tasks;
 
 	public int getId() {
 		return id;
@@ -61,6 +67,16 @@ public class Collaborator implements Serializable {
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+
+	
+	
+	public List<Task> getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(List<Task> tasks) {
+		this.tasks = tasks;
 	}
 
 	@Override

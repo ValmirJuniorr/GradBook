@@ -16,7 +16,7 @@ public class Consts {
 	public  static final String COLUMN_ID_COLLABORATOR="ID_Collaborator";
 	public  static final String COLUMN_NAME_COLLABORATOR="Name_Collaborator";
 	public  static final String COLUMN_CPF_COLLABORATOR="CPF_Collaborator";
-	public  static final String COLLABORATOR="pole";
+	public  static final String COLLABORATOR="collaborator";
 	
 	/** 
 	 * <p>Contants to table Tasks;</p>
