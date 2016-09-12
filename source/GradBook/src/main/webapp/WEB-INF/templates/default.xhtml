@@ -17,12 +17,15 @@
 		<p:menubar>
 			<p:menuitem value="#{msgs.index}" url="/index.xhtml" />
 			<p:submenu label="#{msgs.register}">
+				<p:menuitem value="#{msgs.collaborator}"
+					url="/collaborator/list.xhtml" />
 				<p:menuitem value="#{msgs.function}" url="/function/list.xhtml" />
 				<p:menuitem value="#{msgs.pole}" url="/pole/list.xhtml" />
 				<p:menuitem value="#{msgs.course}" url="/course/list.xhtml" />
 				<p:menuitem value="#{msgs.semester}" url="/semester/list.xhtml" />
 				<p:menuitem value="#{msgs.discipline}" url="/discipline/list.xhtml" />
 				<p:menuitem value="#{msgs.team}" url="/team/list.xhtml" />
+				<p:menuitem value="#{msgs.task}" url="/task/list.xhtml" />
 			</p:submenu>
 		</p:menubar>
 	</header>
