@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="/WEB-INF/templates/user.xhtml">
+
+	<ui:define name="titlePage"> GradBook</ui:define>
+	<ui:define name="menuOptions">
+		<p:menubar>
+			<p:menuitem value="#{msgs.index}" url="/admin/index.xhtml" />
+			<p:submenu label="#{msgs.register}">
+				<p:menuitem value="#{msgs.collaborator}"
+					url="/admin/collaborator/list.xhtml" />
+				<p:menuitem value="#{msgs.function}"
+					url="/admin/function/list.xhtml" />
+				<p:menuitem value="#{msgs.pole}" url="/admin/pole/list.xhtml" />
+				<p:menuitem value="#{msgs.course}" url="/admin/course/list.xhtml" />
+				<p:menuitem value="#{msgs.semester}"
+					url="/admin/semester/list.xhtml" />
+				<p:menuitem value="#{msgs.discipline}"
+					url="/admin/discipline/list.xhtml" />
+				<p:menuitem value="#{msgs.team}" url="/admin/team/list.xhtml" />
+				<p:menuitem value="#{msgs.task}" url="/admin/task/list.xhtml" />
+			</p:submenu>
+			<f:facet name="options">
+				<p:commandButton type="button" value="Logout" icon="ui-icon-extlink"
+					action="#{logout.efetuarLogout()}" />
+			</f:facet>
+
+		</p:menubar>
+	</ui:define>
+	<ui:define name="bodyPage">
+		<h2>Só sucesso!</h2>
+	</ui:define>
+</ui:composition>
+</html>

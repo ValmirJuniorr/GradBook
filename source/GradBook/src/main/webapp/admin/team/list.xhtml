@@ -5,55 +5,56 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="/WEB-INF/templates/default.xhtml">
+<ui:composition template="/WEB-INF/templates/admin.xhtml">
 
-	<ui:define name="titlePage"> #{msgs.discipline}</ui:define>
+	<ui:define name="titlePage"> #{msgs.team}</ui:define>
 	<ui:define name="bodyPage">
 
 		<h:form id="formTable">
 			<p:button icon="ui-icon-plus" outcome="create"
-				value="#{msgs.create} #{msgs.discipline}" />
-			<p:dataTable id="table" var="discipline"
-				value="#{disciplineBean.disciplinesEager}" paginator="true" rows="10"
+				value="#{msgs.create} #{msgs.team}" />
+			<p:dataTable id="table" var="team"
+				value="#{teamBean.teams}" paginator="true" rows="10"
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,20" resizableColumns="true" reflow="true"
 				paginatorPosition="bottom">
 
 				<f:facet name="header">
-					<h:outputText value="#{msgs.disciplines}" />
+					<h:outputText value="#{msgs.teams}" />
 				</f:facet>
 
-				<p:column sortBy="#{discipline.name}"
-					headerText="#{msgs.name_discipline}">
-					<h:outputText value="#{discipline.name}" />
+				<p:column sortBy="#{team.name}"
+					headerText="#{msgs.name_team}">
+					<h:outputText value="#{team.name}" />
+				</p:column>
+				
+				<p:column sortBy="#{team.pole.name}"
+					headerText="#{msgs.pole}">
+					<h:outputText value="#{team.pole.name}" />
 				</p:column>
 
-				<p:column sortBy="#{discipline.work_Load}"
-					headerText="#{msgs.work_load_discipline}">
-					<h:outputText value="#{discipline.work_Load}" />
-				</p:column>
 				
-				<p:column sortBy="#{discipline.semester.name}"
+				<p:column sortBy="#{team.semester.name}"
 					headerText="#{msgs.semester}">
-					<h:outputText value="#{discipline.semester.name}" />
+					<h:outputText value="#{team.semester.name}" />
 				</p:column>
 				
-				<p:column sortBy="#{discipline.semester.course.name}"
+				<p:column sortBy="#{team.semester.course.name}"
 					headerText="#{msgs.course}">
-					<h:outputText value="#{discipline.semester.course.name}" />
+					<h:outputText value="#{team.semester.course.name}" />
 				</p:column>
 				
 
 				<p:column headerText="#{msgs.edit}">
 					<p:button value="#{msgs.edit}" icon="fa fa-fw fa-edit"
 						outcome="edit">
-						<f:param name="discipline" value="#{discipline.id}" />
-						<f:param name="course" value="#{discipline.semester.course.id}" />
+						<f:param name="team" value="#{team.id}" />
+						<f:param name="course" value="#{team.semester.course.id}" />
 					</p:button>
 				</p:column>
 				<p:column headerText="#{msgs.delete}">
 					<p:commandButton value="#{msgs.delete}" icon="fa fa-fw fa-remove"
-						actionListener="#{disciplineBean.delete(discipline)}" update="table">
+						actionListener="#{teamBean.delete(team)}" update="table">
 						<p:confirm header="#{msgs.alert}" message="#{msgs.confirm_delete}"
 							icon="ui-icon-alert" />
 					</p:commandButton>

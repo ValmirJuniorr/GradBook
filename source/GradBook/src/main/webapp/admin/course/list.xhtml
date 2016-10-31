@@ -5,57 +5,44 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="/WEB-INF/templates/default.xhtml">
+<ui:composition template="/WEB-INF/templates/admin.xhtml">
 
-	<ui:define name="titlePage"> #{msgs.team}</ui:define>
+	<ui:define name="titlePage"> #{msgs.course}</ui:define>
 	<ui:define name="bodyPage">
 
 		<h:form id="formTable">
 			<p:button icon="ui-icon-plus" outcome="create"
-				value="#{msgs.create} #{msgs.team}" />
-			<p:dataTable id="table" var="team"
-				value="#{teamBean.teams}" paginator="true" rows="10"
+				value="#{msgs.create} #{msgs.course}" />
+			<p:dataTable id="table" var="course"
+				value="#{courseBean.courses}" paginator="true" rows="10"
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,20" resizableColumns="true" reflow="true"
 				paginatorPosition="bottom">
 
 				<f:facet name="header">
-					<h:outputText value="#{msgs.teams}" />
+					<h:outputText value="#{msgs.list_course}" />
 				</f:facet>
 
-				<p:column sortBy="#{team.name}"
-					headerText="#{msgs.name_team}">
-					<h:outputText value="#{team.name}" />
-				</p:column>
-				
-				<p:column sortBy="#{team.pole.name}"
-					headerText="#{msgs.pole}">
-					<h:outputText value="#{team.pole.name}" />
+				<p:column sortBy="#{course.abbreviation}"
+					headerText="#{msgs.abbreviation_course}">
+					<h:outputText value="#{course.abbreviation}" />
 				</p:column>
 
-				
-				<p:column sortBy="#{team.semester.name}"
-					headerText="#{msgs.semester}">
-					<h:outputText value="#{team.semester.name}" />
+				<p:column sortBy="#{course.name}" headerText="#{msgs.name_course}">
+					<h:outputText value="#{course.name}" />
 				</p:column>
-				
-				<p:column sortBy="#{team.semester.course.name}"
-					headerText="#{msgs.course}">
-					<h:outputText value="#{team.semester.course.name}" />
-				</p:column>
-				
 
 				<p:column headerText="#{msgs.edit}">
 					<p:button value="#{msgs.edit}" icon="fa fa-fw fa-edit"
 						outcome="edit">
-						<f:param name="team" value="#{team.id}" />
-						<f:param name="course" value="#{team.semester.course.id}" />
+						<f:param name="id" value="#{course.id}" />
 					</p:button>
 				</p:column>
 				<p:column headerText="#{msgs.delete}">
 					<p:commandButton value="#{msgs.delete}" icon="fa fa-fw fa-remove"
-						actionListener="#{teamBean.delete(team)}" update="table">
-						<p:confirm header="#{msgs.alert}" message="#{msgs.confirm_delete}"
+						actionListener="#{courseBean.delete(course)}" update="table">
+						<p:confirm header="#{msgs.alert}"
+							message="#{msgs.confirm_delete}"
 							icon="ui-icon-alert" />
 					</p:commandButton>
 

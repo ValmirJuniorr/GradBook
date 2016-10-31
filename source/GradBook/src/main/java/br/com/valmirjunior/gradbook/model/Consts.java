@@ -110,7 +110,19 @@ public class Consts {
 	public  static final String COLUMN_POLE_TEAM="Semester_ID_Pole";
 	public  static final String FK_ID_SEMESTER_TEAM="FK_ID_SEMESTER";
 	public  static final String FK_ID_POLE_TEAM="FK_ID_POLE";
-	public  static final String TEAM="discipline";
+	public  static final String TEAM="team";
+	
+	/** 
+	 * <p>Contants to table users;</p>
+	 */
+	public  static final String SEQUENCE_USER="UerSequence";
+	public  static final String SEQUENCE_NAME_USER="SQ_ID_USER";
+	public  static final String UNIQUE_CONSTRAINT_USER="UNIQUE_COLUMNS_USER";	
+	public  static final String TABLE_USER="Users";
+	public  static final String COLUMN_ID_USER="ID_User";
+	public  static final String COLUMN_LOGIN_USER="Login_User";
+	public  static final String COLUMN_PASSWORD_USER="Passwor_User";
+	public  static final String USER="user";
 	
 	
 	

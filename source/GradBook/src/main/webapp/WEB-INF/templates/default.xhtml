@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
@@ -14,20 +15,19 @@
 <h:body>
 	<header>
 		<h2>#{msgs.welcome}</h2>
-		<p:menubar>
-			<p:menuitem value="#{msgs.index}" url="/index.xhtml" />
-			<p:submenu label="#{msgs.register}">
-				<p:menuitem value="#{msgs.collaborator}"
-					url="/collaborator/list.xhtml" />
-				<p:menuitem value="#{msgs.function}" url="/function/list.xhtml" />
-				<p:menuitem value="#{msgs.pole}" url="/pole/list.xhtml" />
-				<p:menuitem value="#{msgs.course}" url="/course/list.xhtml" />
-				<p:menuitem value="#{msgs.semester}" url="/semester/list.xhtml" />
-				<p:menuitem value="#{msgs.discipline}" url="/discipline/list.xhtml" />
-				<p:menuitem value="#{msgs.team}" url="/team/list.xhtml" />
-				<p:menuitem value="#{msgs.task}" url="/task/list.xhtml" />
-			</p:submenu>
-		</p:menubar>
+		<ui:insert name="menuPage"></ui:insert>
+		<ui:insert name="menuOptions">
+			<p:menubar>
+				<p:menuitem value="#{msgs.index}" url="/index.xhtml" />
+
+				<f:facet name="options">
+					<p:button outcome="/security/login.xhtml" value="Login" icon="ui-icon-star"/>
+				</f:facet>
+				
+			</p:menubar>
+		</ui:insert>
+
+
 	</header>
 	<p:separator />
 	<ui:insert name="bodyPage"></ui:insert>

@@ -5,8 +5,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="/WEB-INF/templates/default.xhtml">
-	<ui:define name="titlePage"> #{msgs.register_team}</ui:define>
+<ui:composition template="/WEB-INF/templates/admin.xhtml">
+	<ui:define name="titlePage"> #{msgs.register_discipline}</ui:define>
 	<ui:define name="bodyPage">
 		<h:form id="formRegister">
 			<p:panel id="panel" header="Form">
@@ -15,24 +15,20 @@
 						columnClasses="ui-grid-col-2,ui-grid-col-6,ui-grid-col-3"
 						layout="grid" styleClass="ui-panelgrid-blank">
 
-						<p:outputLabel for="inputNameTeam" value="#{msgs.name_team}" />
-						<p:inputText id="inputNameTeam"
-							placeholder="#{msgs.insert_name_team}"
-							value="#{teamBean.team.name}" />
-						<p:message for="inputNameTeam" />
+						<p:outputLabel for="inputNameDiscipline"
+							value="#{msgs.name_discipline}" />
+						<p:inputText id="inputNameDiscipline"
+							placeholder="#{msgs.insert_name_discipline}"
+							value="#{disciplineBean.discipline.name}" />
+						<p:message for="inputNameDiscipline" />
 
-						<p:outputLabel value="#{msgs.pole}:" for="poleSelect" />
-
-						<p:selectOneMenu id="poleSelect" value="#{teamBean.team.pole}">
-							<f:selectItem itemLabel="#{msgs.choice_pole} "
-								noSelectionOption="true" />
-							<f:selectItems value="#{poleBean.poles}" var="pole"
-								itemLabel="#{pole.name}" itemValue="#{pole}" />
-						</p:selectOneMenu>
-
-						<p:message for="poleSelect" />
-
-
+						<p:outputLabel for="inputWorkLoadDiscipline"
+							value="#{msgs.work_load_discipline}" />
+						<p:spinner id="inputWorkLoadDiscipline" min="20" max="100" 
+							stepFactor="20" suffix=" HS" dir="LTR" 
+							placeholder="#{msgs.insert_work_load_discipline}"
+							value="#{disciplineBean.discipline.work_Load}" />
+						<p:message for="inputWorkLoadDiscipline" />
 
 						<p:outputLabel value="#{msgs.course}:" for="courseSelect" />
 
@@ -50,7 +46,7 @@
 						<p:outputLabel value="#{msgs.semester}:" for="semesterSelect" />
 
 						<p:selectOneMenu id="semesterSelect"
-							value="#{teamBean.team.semester}">
+							value="#{disciplineBean.discipline.semester}">
 							<f:selectItem itemLabel="#{msgs.choice_semester} "
 								noSelectionOption="true" />
 							<f:selectItems value="#{semesterBean.semestersByCourse}"
@@ -65,9 +61,9 @@
 				<f:facet name="footer">
 					<ui:insert name="comands">
 						<p:commandButton value="#{msgs.save}"
-							action="#{teamBean.create()}" icon="fa fa-fw fa-save"
+							action="#{disciplineBean.create()}" icon="fa fa-fw fa-save"
 							update="formRegister" />
-						<p:button outcome="list" value="#{msgs.show_team}"
+						<p:button outcome="list" value="#{msgs.show_disciplines}"
 							icon="fa fa-fw fa-eye" />
 						<p:button type="reset" value="#{msgs.reset}"
 							icon="fa fa-fw fa-eraser" />
