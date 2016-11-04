@@ -36,7 +36,7 @@
 			<http-method>DELETE</http-method>
 		</web-resource-collection>
 		<auth-constraint>
-			<role-name>ADMINISTRATOR</role-name>
+			<role-name>ADMIN</role-name>
 		</auth-constraint>
 	</security-constraint>
 
@@ -68,7 +68,7 @@
 
 	<!--Denining security role -->
 	<security-role>
-		<role-name>ADMINISTRATOR</role-name>
+		<role-name>ADMIN</role-name>
 	</security-role>
 
 	<security-role>

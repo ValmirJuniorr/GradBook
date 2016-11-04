@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
@@ -37,5 +38,40 @@
 			</div>
 		</div>
 	</form>
+	
+	<!-- h:form id="formRegister" action="j_security_check" method="post">
+			<p:panel id="panel" header="Form">
+				<div class="ui-fluid">
+					<p:panelGrid columns="3" cellpadding="5"
+						columnClasses="ui-grid-col-2,ui-grid-col-6,ui-grid-col-3"
+						layout="grid" styleClass="ui-panelgrid-blank">
+						
+						
+						<p:outputLabel id="j_usernameLabel"
+							for="j_username" value="Password:" />
+							
+							<p:inputText id="j_username" name="j_username"
+							placeholder="Password"/>
+							
+						<p:outputLabel id="j_passwordLabel"
+							for="j_password" value="Username:" />
+							
+							<p:password id="j_password" name="j_username"
+							placeholder="Username"/>						
+				</div>
+				
+				<f:facet name="footer">
+					<ui:insert name="comands">
+						<p:commandButton value="#{msgs.save}" action="#{courseBean.create()}" icon="fa fa-fw fa-save"
+							update="formRegister" />
+						<p:button outcome="list" value="#{msgs.show_courses}" icon="fa fa-fw fa-eye"/>
+						<p:button type="reset" value="#{msgs.reset}" icon="fa fa-fw fa-eraser"/>
+					</ui:insert>
+				</f:facet>
+			</p:panel>
+		</h:form-->
+	
+	
+	
 </h:body>
 </html>
