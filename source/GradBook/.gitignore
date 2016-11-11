@@ -1,0 +1,27 @@
+# Directories #
+build/
+bin/
+target/
+libs/
+tmp/
+.settings/
+
+node_modules/
+jaxws/jaxws-client/src/main/
+
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.db
+
+# Eclipse
+######################
+
+local.properties
+.classpath
+.loadpath
+.project
+.tern-project
