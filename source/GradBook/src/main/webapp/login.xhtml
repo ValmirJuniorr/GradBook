@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title><ui:insert name="titlePage">GradBook</ui:insert></title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</h:head>
+
+<h:body>
+	<header>
+		<h2>Login</h2>
+	</header>
+	<p:separator />
+	
+	<h:form prependId="false" onsubmit="this.action='j_security_check';">
+    
+		<p:panel id="panel" header="Login">
+			<div class="ui-fluid">
+				<p:panelGrid columns="2" cellpadding="5"
+					columnClasses="ui-grid-col-2,ui-grid-col-6,ui-grid-col-3"
+					layout="grid" styleClass="ui-panelgrid-blank">
+
+					<p:outputLabel id="j_usernameLabel" for="j_username"
+						value="Username:" />
+
+					<p:inputText id="j_username" placeholder="Username" />
+
+					<p:outputLabel id="j_passwordLabel" for="j_password"
+						value="Password:" />
+
+					<p:password id="j_password" placeholder="Password" />
+				</p:panelGrid>
+			</div>
+
+			<f:facet name="footer">
+
+				<p:commandButton id="submit" value="Login" ajax="false" />
+
+			</f:facet>
+		</p:panel>
+	</h:form>
+
+
+</h:body>
+</html>

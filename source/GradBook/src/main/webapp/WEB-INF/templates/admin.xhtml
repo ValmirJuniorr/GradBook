@@ -27,8 +27,10 @@
 				<p:menuitem value="#{msgs.task}" url="/admin/task/list.xhtml" />
 			</p:submenu>
 			<f:facet name="options">
-				<p:commandButton type="button" value="Logout" icon="ui-icon-extlink"
-					action="#{logout.efetuarLogout()}" />
+				<p:menubar>
+					<p:menuitem value="Sair" url="/login.xhtml" icon="ui-icon-close"
+						action="#{logout.efetuarLogout}" />
+				</p:menubar>
 			</f:facet>
 
 		</p:menubar>

@@ -126,16 +126,6 @@ public class Consts {
 	public  static final String FK_ID_ROLE_USER="FK_ID_ROLE";
 	public  static final String USER="user";
 	
-	/** 
-	 * <p>Contants to table Role;</p>
-	 */
-	public  static final String SEQUENCE_ROLE="roleSequence";
-	public  static final String SEQUENCE_NAME_ROLE="SQ_ID_ROLE";
-	public  static final String UNIQUE_CONSTRAINT_ROLE="UNIQUE_COLUMNS_ROLE";	
-	public  static final String TABLE_ROLE="Roles";
-	public  static final String COLUMN_ID_ROLE="ID_Role";
-	public  static final String COLUMN_NAME_ROLE="Name_Role";
-	public  static final String ROLE="role";
 	
 	
 	

@@ -16,16 +16,28 @@
 	<welcome-file-list>
 		<welcome-file>index.xhtml</welcome-file>
 	</welcome-file-list>
+
 	<!--error-page> <exception-type>java.lang.Exception</exception-type> <location>/error.xhtml</location> 
 		</error-page -->
 
 
-	<error-page>
-		<error-code>403</error-code>
-		<location>/security/permissionError.xhtml</location>
-	</error-page>
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<realm-name>GradBookRealm</realm-name>
+		<form-login-config>
+			<form-login-page>/login.xhtml</form-login-page>
+			<form-error-page>/loginError.xhtml</form-error-page>
+		</form-login-config>
+	</login-config>
 
-	<!--Defining security constraint for type of roles available -->
+	<security-role>
+		<role-name>ADMIN</role-name>
+	</security-role>
+
+	<security-role>
+		<role-name>USER</role-name>
+	</security-role>
+
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>administrator</web-resource-name>
@@ -53,30 +65,11 @@
 			<role-name>USER</role-name>
 		</auth-constraint>
 	</security-constraint>
-	<!--Defining security constraint for type of roles available -->
 
-	<!--Defining type of authenitcation mechanism -->
-	<login-config>
-		<auth-method>FORM</auth-method>
-		<realm-name>GradBook</realm-name>
-		<form-login-config>
-			<form-login-page>/security/login.xhtml</form-login-page>
-			<form-error-page>/security/loginError.xhtml</form-error-page>
-		</form-login-config>
-	</login-config>
-	<!--Defining type of authenitcation mechanism -->
-
-	<!--Denining security role -->
-	<security-role>
-		<role-name>ADMIN</role-name>
-	</security-role>
-
-	<security-role>
-		<role-name>USER</role-name>
-	</security-role>
-	<!--Denining security role -->
-
-
+	<error-page>
+		<error-code>403</error-code>
+		<location>/permissionError.xhtml</location>
+	</error-page>
 
 	<context-param>
 		<param-name>primefaces.THEME</param-name>

@@ -8,10 +8,11 @@ import javax.servlet.http.HttpSession;
 @ManagedBean(name="logout")
 @SessionScoped
 public class Logout {
-	public void efetuarLogout(){
+	public String efetuarLogout(){
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
 		session.invalidate();
 		System.out.println("logout success");
+		return "/login.xhtml";
 	}
 }
