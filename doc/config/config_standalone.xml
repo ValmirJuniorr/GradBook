@@ -14,8 +14,8 @@
 			<max-pool-size>10</max-pool-size>
 		</pool>
 		<security>
-			<user-name>postgres</user-name>
-			<password>root</password>
+			<user-name>usuario</user-name>
+			<password>senha</password>
 		</security>
 		<validation>
 			<check-valid-connection-sql>SELECT 1</check-valid-connection-sql>
@@ -51,42 +51,19 @@
 		<authentication>
 			<login-module code="Database" flag="required">
 				<module-option name="dsJndiName" value="java:jboss/datasources/GradBookDS"/>
-				<module-option name="rolesQuery" value="SELECT role, 'Roles' FROM gradbook.users WHERE username=?"/>
-                <!--module-option name="hashAlgorithm" value="MD5"/>
-                <module-option name="hashEncoding" value="hex"/-->
-                	<module-option name="principalsQuery" value="SELECT password from gradbook.users WHERE username=?"/>
-                </login-module>
-            </authentication>
-            <authorization>
-            	<policy-module code="Database" flag="required">
-            		<module-option name="dsJndiName" value="java:jboss/datasources/GradBookDS"/>
-            		<module-option name="rolesQuery" value="SELECT role, 'Roles' FROM gradbook.users WHERE username=?"/>
-            	<!--module-option name="hashAlgorithm" value="MD5"/>
-            	<module-option name="hashEncoding" value="hex"/-->
-            		<module-option name="principalsQuery" value="SELECT password from gradbook.users WHERE username=?"/>
-            	</policy-module>
-            </authorization>
-        </security-domain>
-        ...
+				<module-option name="rolesQuery" value="select role_user, 'Roles'  from gradbook.users where login_user = ?"/>
+				<module-option name="principalsQuery" value="select password_user  from gradbook.users where login_user= ?"/>
+			</login-module>
+		</authentication>
+		<authorization>
+			<policy-module code="Database" flag="required">
+				<module-option name="dsJndiName" value="java:jboss/datasources/GradBookDS"/>
+				<module-option name="rolesQuery" value="select role_user, 'Roles'  from gradbook.users where login_user = ?"/>
+				<module-option name="principalsQuery" value="select password_user  from gradbook.users where login_user=?"/>
+			</policy-module>
+		</authorization>
+	</security-domain>
 
+	.....
 
-        <security-domain name="GradBookRealm" cache-type="default">
-        	<authentication>
-        		<login-module code="Database" flag="required">
-        			<module-option name="dsJndiName" value="java:jboss/datasources/GradBookDS"/>
-        			<module-option name="rolesQuery" value="select role_user, 'Roles'  from gradbook.users where login_user = ?"/>
-        			<module-option name="principalsQuery" value="select password_user  from gradbook.users where login_user= ?"/>
-        		</login-module>
-        	</authentication>
-        	<authorization>
-        		<policy-module code="Database" flag="required">
-        			<module-option name="dsJndiName" value="java:jboss/datasources/GradBookDS"/>
-        			<module-option name="rolesQuery" value="select role_user, 'Roles'  from gradbook.users where login_user = ?"/>
-        			<module-option name="principalsQuery" value="select password_user  from gradbook.users where login_user=?"/>-
-        		</policy-module>
-        	</authorization>
-        </security-domain>
-
-        .....
-
-    </security-domains>
+</security-domains>
