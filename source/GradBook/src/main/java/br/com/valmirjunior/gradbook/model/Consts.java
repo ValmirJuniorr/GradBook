@@ -1,6 +1,19 @@
 package br.com.valmirjunior.gradbook.model;
 
 public class Consts {
+	public static final String APP="GradBook";
+	
+	
+	/**
+	 * Consts to EJBS
+	 * */
+	public static final String USERDAO="";
+	public static final String COLABORATOR_DAO="";
+	
+	
+	/**
+	 * Consts to database;
+	 * */
 	public  static final String SCHEMA="gradbook";
 	public static final int ALLOCATION_SIZE=1;
 	public static final int MAX_SIZE_NORMAL_TEXT=30;

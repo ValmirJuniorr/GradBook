@@ -10,7 +10,7 @@
 	<f:viewParam name="id" value="#{courseBean.course}" />
 </f:metadata>
 
-<ui:composition template="/course/create.xhtml">
+<ui:composition template="create.xhtml">
 	<ui:define name="comands">
 		<p:commandButton value="#{msgs.save}" icon="fa fa-fw fa-save"
 			action="#{courseBean.update()}" update="formRegister" />

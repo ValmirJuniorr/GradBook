@@ -10,7 +10,7 @@
 	<f:viewParam name="id" value="#{collaboratorBean.collaborator}" />
 </f:metadata>
 
-<ui:composition template="/collaborator/create.xhtml">
+<ui:composition template="create.xhtml">
 	<ui:define name="comands">
 		<p:commandButton value="#{msgs.save}" icon="fa fa-fw fa-save"
 			action="#{collaboratorBean.update()}" update="formRegister" />

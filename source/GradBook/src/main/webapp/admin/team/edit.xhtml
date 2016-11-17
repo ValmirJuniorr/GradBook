@@ -11,7 +11,7 @@
 	<f:viewParam name="course" value="#{semesterBean.course}" />	
 </f:metadata>
 
-<ui:composition template="/team/create.xhtml">
+<ui:composition template="create.xhtml">
 	<ui:define name="comands">
 		<p:commandButton value="#{msgs.save}" icon="fa fa-fw fa-save"
 			action="#{disciplineBean.update()}" update="formRegister" />

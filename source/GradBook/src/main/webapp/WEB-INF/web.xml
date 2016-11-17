@@ -14,6 +14,7 @@
 		<url-pattern>*.xhtml</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
+		<welcome-file>index</welcome-file>
 		<welcome-file>index.xhtml</welcome-file>
 	</welcome-file-list>
 
@@ -62,6 +63,21 @@
 			<http-method>DELETE</http-method>
 		</web-resource-collection>
 		<auth-constraint>
+			<role-name>USER</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>index</web-resource-name>
+			<url-pattern>/index</url-pattern>
+			<http-method>POST</http-method>
+			<http-method>GET</http-method>
+			<http-method>PUT</http-method>
+			<http-method>DELETE</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>ADMIN</role-name>
 			<role-name>USER</role-name>
 		</auth-constraint>
 	</security-constraint>

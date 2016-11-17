@@ -13,10 +13,9 @@
 			<p:menuitem value="#{msgs.index}" url="/user/index.xhtml" />
 
 			<f:facet name="options">
-				<h:form>
-					<p:commandButton type="button" value="Logout"
-						icon="ui-icon-extlink" action="#{logout.efetuarLogout()}" />
-				</h:form>
+				<p:menubar>
+					<p:menuitem value="Sair" url="/logout" icon="ui-icon-close" />
+				</p:menubar>
 			</f:facet>
 
 		</p:menubar>

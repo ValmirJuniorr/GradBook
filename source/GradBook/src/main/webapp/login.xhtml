@@ -12,38 +12,42 @@
 </h:head>
 
 <h:body>
-	<header>
-		<h2>Login</h2>
-	</header>
-	<p:separator />
-	
-	<h:form prependId="false" onsubmit="this.action='j_security_check';">
-    
-		<p:panel id="panel" header="Login">
-			<div class="ui-fluid">
-				<p:panelGrid columns="2" cellpadding="5"
-					columnClasses="ui-grid-col-2,ui-grid-col-6,ui-grid-col-3"
-					layout="grid" styleClass="ui-panelgrid-blank">
+	<div class="ui-g">
+		<div class="ui-g-12 ui-md-8 ui-lg-6">
+			<header>
+				<h2>Login</h2>
+			</header>
+			<p:separator />
 
-					<p:outputLabel id="j_usernameLabel" for="j_username"
-						value="Username:" />
+			<h:form prependId="false" onsubmit="this.action='j_security_check';">
 
-					<p:inputText id="j_username" placeholder="Username" />
+				<p:panel id="panel" header="Login">
+					<div class="ui-fluid">
+						<p:panelGrid columns="2" cellpadding="5"
+							columnClasses="ui-grid-col-4,ui-grid-col-6" layout="grid"
+							styleClass="ui-panelgrid-blank">
 
-					<p:outputLabel id="j_passwordLabel" for="j_password"
-						value="Password:" />
+							<p:outputLabel id="j_usernameLabel" for="j_username"
+								value="Username:" />
 
-					<p:password id="j_password" placeholder="Password" />
-				</p:panelGrid>
-			</div>
+							<p:inputText id="j_username" placeholder="Username" />
 
-			<f:facet name="footer">
+							<p:outputLabel id="j_passwordLabel" for="j_password"
+								value="Password:" />
 
-				<p:commandButton id="submit" value="Login" ajax="false" />
+							<p:password id="j_password" placeholder="Password" />
+						</p:panelGrid>
+					</div>
 
-			</f:facet>
-		</p:panel>
-	</h:form>
+					<f:facet name="footer">
+
+						<p:commandButton id="submit" value="Login" ajax="false" />
+
+					</f:facet>
+				</p:panel>
+			</h:form>
+		</div>
+	</div>
 
 
 </h:body>
