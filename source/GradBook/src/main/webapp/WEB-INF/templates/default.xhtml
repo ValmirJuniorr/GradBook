@@ -9,19 +9,18 @@
 	<title><ui:insert name="titlePage">GradBook</ui:insert></title>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<!-- h:outputStylesheet library="css" name="main.css" /-->
+	<h:outputStylesheet library="css" name="main.css" />
 </h:head>
 
 <h:body>
-	<header>
-		<h2>#{msgs.welcome}</h2>
+	<header>		
 		<ui:insert name="menuPage"></ui:insert>
 		<ui:insert name="menuOptions">
 			<p:menubar>
 				<p:menuitem value="#{msgs.index}" url="/index.xhtml" />
 
 				<f:facet name="options">
-					<p:button outcome="/login.xhtml" value="Login" icon="ui-icon-star"/>
+					<p:button outcome="/login.xhtml" value="Login" icon="ui-icon-star"/>					
 				</f:facet>
 				
 			</p:menubar>

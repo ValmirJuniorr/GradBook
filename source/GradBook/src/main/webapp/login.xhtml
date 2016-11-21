@@ -9,16 +9,12 @@
 	<title><ui:insert name="titlePage">GradBook</ui:insert></title>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<h:outputStylesheet library="css" name="main.css" />
 </h:head>
 
 <h:body>
 	<div class="ui-g">
-		<div class="ui-g-12 ui-md-8 ui-lg-6">
-			<header>
-				<h2>Login</h2>
-			</header>
-			<p:separator />
-
+		<div class="ui-g-12 ui-md-8 ui-lg-6 container" align="center">
 			<h:form prependId="false" onsubmit="this.action='j_security_check';">
 
 				<p:panel id="panel" header="Login">
@@ -40,15 +36,16 @@
 					</div>
 
 					<f:facet name="footer">
-
-						<p:commandButton id="submit" value="Login" ajax="false" />
-
+						<div align="center">
+							<p:commandButton id="submit" value="Login" ajax="false" icon="fa fa-fw fa-user"/>
+							<p:button type="reset" value="#{msgs.reset}" icon="fa fa-fw fa-eraser"/>
+						</div>
 					</f:facet>
+					
 				</p:panel>
+
 			</h:form>
 		</div>
 	</div>
-
-
 </h:body>
 </html>

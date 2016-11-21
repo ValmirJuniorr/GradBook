@@ -6,7 +6,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 
-<ui:composition template="/WEB-INF/templates/user.xhtml">
+<ui:composition template="/WEB-INF/templates/default.xhtml">
 
 	<ui:define name="titlePage"> GradBook</ui:define>
 	<ui:define name="menuOptions">
@@ -26,10 +26,12 @@
 				<p:menuitem value="#{msgs.team}" url="/admin/team/list.xhtml" />
 				<p:menuitem value="#{msgs.task}" url="/admin/task/list.xhtml" />
 			</p:submenu>
-			<f:facet name="options">
-				<p:menubar>
-					<p:menuitem value="Sair" url="/logout" icon="ui-icon-close" />
-				</p:menubar>
+			<f:facet name="options">				
+				<h:form>
+					<p:menuButton value="#{loginManagerBean.user.login}">
+						<p:menuitem value="Sair" url="/logout" icon="ui-icon-close" />
+					</p:menuButton>
+				</h:form>
 			</f:facet>
 
 		</p:menubar>

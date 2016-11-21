@@ -21,7 +21,9 @@ public class Login extends HttpServlet {
 
 	@Inject
 	Principal principal;
-
+	
+	private  static User user;
+	
 	UserDao userDao;
 
 	/**
@@ -35,14 +37,21 @@ public class Login extends HttpServlet {
 			userDao = (UserDao) new InitialContext().lookup("java:global/GradBook/UserDao");
 		} catch (NamingException e) {
 			e.printStackTrace();
-		}
+		}		
+		
 		String login = principal.getName();
-		User user = userDao.getByLogin(login);
+		user = userDao.getByLogin(login);
+		
 		if (user.getRole() == Role.ADMIN) {
 			response.sendRedirect(request.getContextPath() + "/admin/index.xhtml");
 		} else {
 			response.sendRedirect(request.getContextPath() + "/user/index.xhtml");
 		}
 	}
+
+	public static User getUser() {
+		return user;
+	}
+	
 
 }
