@@ -13,6 +13,10 @@
 
 <header>
 	<h2>Permissão negada!</h2>
+	<h:form>
+		<p:commandButton id="submit" value="Pagina Inicial" ajax="false"
+			icon="fa fa-fw fa-home" action="#{loginManagerBean.homeALlowedForRole()}" />
+	</h:form>
 
 </header>
 <p:separator />

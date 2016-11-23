@@ -13,9 +13,10 @@
 			<p:menuitem value="#{msgs.index}" url="/user/index.xhtml" />
 
 			<f:facet name="options">
-				<p:menubar>
-					<p:menuitem value="Sair" url="/logout" icon="ui-icon-close" />					
-				</p:menubar>
+				<h:form>
+					<p:commandButton id="submit" value="Logout" ajax="false"
+								icon="fa fa-fw fa-user" action="#{loginManagerBean.logout()}" />
+				</h:form>
 			</f:facet>
 
 		</p:menubar>

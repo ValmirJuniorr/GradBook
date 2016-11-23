@@ -26,11 +26,10 @@
 				<p:menuitem value="#{msgs.team}" url="/admin/team/list.xhtml" />
 				<p:menuitem value="#{msgs.task}" url="/admin/task/list.xhtml" />
 			</p:submenu>
-			<f:facet name="options">				
+			<f:facet name="options">
 				<h:form>
-					<p:menuButton value="#{loginManagerBean.user.login}">
-						<p:menuitem value="Sair" url="/logout" icon="ui-icon-close" />
-					</p:menuButton>
+					<p:commandButton id="submit" value="Logout" ajax="false"
+								icon="fa fa-fw fa-user" action="#{loginManagerBean.logout()}" />
 				</h:form>
 			</f:facet>
 

@@ -15,37 +15,41 @@
 <h:body>
 	<div class="ui-g">
 		<div class="ui-g-12 ui-md-8 ui-lg-6 container" align="center">
-			<h:form prependId="false" onsubmit="this.action='j_security_check';">
-
+			<h:form>
 				<p:panel id="panel" header="Login">
 					<div class="ui-fluid">
 						<p:panelGrid columns="2" cellpadding="5"
 							columnClasses="ui-grid-col-4,ui-grid-col-6" layout="grid"
 							styleClass="ui-panelgrid-blank">
 
-							<p:outputLabel id="j_usernameLabel" for="j_username"
+							<p:outputLabel id="usernameLabel" for="username"
 								value="Username:" />
 
-							<p:inputText id="j_username" placeholder="Username" />
+							<p:inputText id="username" placeholder="Username"
+								value="#{loginManagerBean.login}" />
 
-							<p:outputLabel id="j_passwordLabel" for="j_password"
+							<p:outputLabel id="passwordLabel" for="password"
 								value="Password:" />
 
-							<p:password id="j_password" placeholder="Password" />
+							<p:password id="password" placeholder="Password"
+								value="#{loginManagerBean.password}" />
 						</p:panelGrid>
 					</div>
 
 					<f:facet name="footer">
 						<div align="center">
-							<p:commandButton id="submit" value="Login" ajax="false" icon="fa fa-fw fa-user"/>
-							<p:button type="reset" value="#{msgs.reset}" icon="fa fa-fw fa-eraser"/>
+							<p:commandButton id="submit" value="Login" ajax="false"
+								icon="fa fa-fw fa-user" action="#{loginManagerBean.login()}" />
+							<p:button type="reset" value="#{msgs.reset}"
+								icon="fa fa-fw fa-eraser" />
 						</div>
 					</f:facet>
-					
+
 				</p:panel>
 
 			</h:form>
 		</div>
 	</div>
+
 </h:body>
 </html>
